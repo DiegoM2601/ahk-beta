@@ -29,7 +29,7 @@ return
 Run, C:\Users\Mauricio\AppData\Roaming\Telegram Desktop\Telegram.exe
 return
 
-!r::
+^!t::
 Run, C:\Users\Mauricio\AppData\Local\Microsoft\WindowsApps\wt.exe
 return
 
