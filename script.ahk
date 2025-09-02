@@ -57,7 +57,7 @@ return
 
 
 !0::
-Run, Notepad
+Run, Notepad++
 return
 
 
