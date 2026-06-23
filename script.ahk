@@ -68,3 +68,8 @@ DllCall("LockWorkStation")
 return
 
 ^!Esc::DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ;  Suspend
+
+; Presiona Ctrl + Espacio para fijar/desfijar la ventana activa
+^SPACE::
+WinSet, AlwaysOnTop, Toggle, A
+return
