@@ -3,73 +3,49 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-
+; Alt + d: Insertar fecha
 !d::
 FormatTime, xx,, dd-MM-yyyy
 sendINput, %xx%
 return
 
-!f::
-Run, C:\Program Files\Mozilla Firefox\firefox.exe
-return
-
-!c::
-Run, C:\Program Files\Google\Chrome\Application\chrome.exe
-return
-
-!a::
-Run, C:\Users\Mauricio\AppData\Local\Asana\Asana.exe
-return
-
-!s::
-Run, C:\Windows\system32\SnippingTool.exe
-return
-
-!t::
-Run, C:\Users\Mauricio\AppData\Roaming\Telegram Desktop\Telegram.exe
-return
-
+; Ctrl + Alt + t: Abrir terminal
 ^!t::
 Run, C:\Users\Mauricio\AppData\Local\Microsoft\WindowsApps\wt.exe
 return
 
+; Alt + 2: Abrir Vault de Obsidian notas-programacion
 !1::
 Run, obsidian://open?vault=notas-programacion
 return
 
+; Alt + 2: Abrir Vault de Obsidian notas-varias
 !2::
-Run, obsidian://open?vault=notas-universidad
+Run, obsidian://open?vault=notas-varias
 return
 
+; Auto-reemplazo: Escribir 'f0' y a continuación pulsar "Space" para insertar la fecha actual (DD-MM-AAAA)
 ::f0::
-FormatTime, xx,, dd-MM-yyyy
-sendINput, %xx%
+    FormatTime, xx,, dd-MM-yyyy
+    SendInput, %xx%
 return
 
-!8::
-Run, C:\Users\Mauricio\AppData\Local\Programs\obsidian\Obsidian.exe
-return
-
-
-!9::
-Run, D:\Aplicaciones\SublimeText\Sublime Text 3\sublime_text.exe
-return
-
-
+; Alt + 0: Abrir Notepad++
 !0::
 Run, Notepad++
 return
 
-
+; Alt + Esc: Bloquear la sesión
 !Esc::
-{
-DllCall("LockWorkStation")
-}
+    DllCall("LockWorkStation")
 return
 
-^!Esc::DllCall("PowrProf\SetSuspendState", "int", 0, "int", 1, "int", 0) ;  Suspend
+; Ctrl + Alt + Esc: Suspender el equipo
+^!Esc::
+    DllCall("PowrProf\SetSuspendState", "Int", 0, "Int", 1, "Int", 0)
+return
 
-; Presiona Ctrl + Espacio para fijar/desfijar la ventana activa
+; Ctrl + Espacio: Fijar / Desfijar la ventana activa (Always on Top)
 ^SPACE::
-WinSet, AlwaysOnTop, Toggle, A
+    WinSet, AlwaysOnTop, Toggle, A
 return
